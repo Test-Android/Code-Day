@@ -25,15 +25,6 @@ public class grid
 		grid = new int[this.x][this.y];
 		grid[playerx][playery] = 2 ; 
 	}
-	public void drawgrid(Graphics2D g)
-	{
-		for (int x = 0 ; x < this.x ; x ++)
-			for (int y = 0 ; y < this.y ; y ++)
-			{
-				if(grid[x][y] == 1)
-				g.drawRect(x*mutiplyer16bit + insetLeft, y*mutiplyer16bit + insetTop, mutiplyer16bit, mutiplyer16bit);
-			}
-	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )
 	{
 		grid[x][y] = num ;
