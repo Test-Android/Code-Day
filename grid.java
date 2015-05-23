@@ -47,5 +47,14 @@ public class grid
 		grid[x-1][ypostion+2] = 1; 
 		
 	}
-	
+	 public void update()
+	 {
+		 for(x = 1; x < this.x; x++)
+			 for(y = 0; y < this.y; y++)
+			 {
+				 if(grid[x][y] != 2 )
+				 grid[x-1][y] = grid[x][y];
+			 }
+			 
+	 }
 }
