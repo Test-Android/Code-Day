@@ -42,5 +42,16 @@ public class Player
 	{
 		return y;
 	}
-	
+	public void setUp(boolean b)
+	{
+		up = b;
+	}
+	public void setLeft(boolean b)
+	{
+		left = b;
+	}
+	public void setright(boolean b)
+	{
+		right = b;
+	}
 }
