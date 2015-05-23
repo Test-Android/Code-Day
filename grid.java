@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 
@@ -19,10 +20,10 @@ public class grid
 		grid = new int[this.x][this.y];
 		grid[playerx][playery] = 2 ; 
 	}
-	public void drawgrid(Graphics g )
+	public void drawgrid(Graphics2D g )
 	{
 		for (int x = 0 ; x < this.x ; x ++)
-			for (int y = 0 ; x < this.y ; y ++)
+			for (int y = 0 ; y < this.y ; y ++)
 				g.drawRect(x*mutiplyer16bit, y*mutiplyer16bit, mutiplyer16bit, mutiplyer16bit);
 	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )

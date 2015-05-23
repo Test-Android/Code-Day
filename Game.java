@@ -12,6 +12,7 @@ public class Game extends JFrame implements Runnable
 	private boolean running = false;
 	BufferedImage backBuffer;
 	Graphics g;
+	grid grid;
 	int x,y;
 	
 	public Game()
@@ -23,6 +24,7 @@ public class Game extends JFrame implements Runnable
 		backBuffer = new BufferedImage(640,480,BufferedImage.TYPE_INT_RGB);
 		x = 0;
 		y = 0;
+		grid = new grid(GraySpaceMain.WIDTH / 16, GraySpaceMain.HEIGHT / 16, 0, 0);
 	}
 	
 	public synchronized void start()
@@ -65,11 +67,11 @@ public class Game extends JFrame implements Runnable
         Graphics2D bbg = (Graphics2D)backBuffer.getGraphics();
         
         bbg.setColor(Color.WHITE);
-        bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);
+        /*bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);
         
         bbg.setColor(Color.black);
-        bbg.fillRect(x, y, 32, 32);
-
+        bbg.fillRect(x, y, 32, 32);*/
+        grid.drawgrid(bbg);
         g.drawImage(backBuffer, 0, 0, this); 
         
         
