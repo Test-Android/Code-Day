@@ -51,6 +51,28 @@ public class Game extends JFrame implements Runnable
 	
 	public void run()
 	{
+<<<<<<< HEAD
+		long lastTime = System.nanoTime();
+		long now = 0;
+		long nowMilis = 0;
+		long lastMilis = 0;
+
+		while(running)
+		{
+			now = System.nanoTime();
+			nowMilis = now / 1000000;
+			lastMilis = lastTime / 1000000;
+			
+			//the lower this is the faster the game will go...
+			//250 would be 1/4 of a second... 500 would be a half... 
+			if(nowMilis - lastMilis > 10)
+			{
+				update();
+				lastTime = now;
+			}
+			render();
+		}
+=======
 		
 		while(running)
 		{
@@ -98,6 +120,7 @@ public class Game extends JFrame implements Runnable
 			        }
 			    }
 
+>>>>>>> origin/master
 	}
 	
 	public void update()
