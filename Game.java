@@ -1,21 +1,23 @@
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 
 //this is the main game thread class
-public class Game implements Runnable
+public class Game extends JFrame implements Runnable
 {
 	private Thread thread;
 	private boolean running = false;
-	private JFrame frame;
 	Graphics g;
+	
 	public Game()
 	{
-		frame = new JFrame();
-		frame.setTitle("Gray Space");
-		frame.setBounds(0,0,640,480);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-		frame.setVisible(true);
+		this.setTitle("Gray Space");
+		this.setBounds(0,0,640,480);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		this.setVisible(true);
+		g = getGraphics();
 	}
 	
 	public synchronized void start()
@@ -38,10 +40,10 @@ public class Game implements Runnable
 	
 	public void run()
 	{
-		render();
 		while(running)
 		{
 			System.out.println("RUNNING");
+			render();
 		}
 		stop();
 	}
@@ -53,8 +55,9 @@ public class Game implements Runnable
 	
 	public void render()
 	{
-		g = frame.getGraphics();
+		g.setColor(Color.BLUE);
 		g.drawOval(0, 0, 20, 20);
+		return;
 	}
 
 }
