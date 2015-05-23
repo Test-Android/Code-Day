@@ -51,7 +51,6 @@ public class Game extends JFrame implements Runnable
 	
 	public void run()
 	{
-<<<<<<< HEAD
 		long lastTime = System.nanoTime();
 		long now = 0;
 		long nowMilis = 0;
@@ -72,55 +71,6 @@ public class Game extends JFrame implements Runnable
 			}
 			render();
 		}
-=======
-		
-		while(running)
-		{
-
-			long initialTime = System.nanoTime();
-			final double timeUpdates = 1000000000 / 60.0;
-			final double timeFrames = 1000000000 / 60.0;
-			double deltaUpdates = 0, deltaFrames = 0;
-			int frames = 0, updates = 0;
-			long timer = System.currentTimeMillis();
-
-			    while (running) 
-			    {
-
-			        long currentTime = System.nanoTime();
-			        deltaUpdates += (currentTime - initialTime) / timeUpdates;
-			        deltaFrames += (currentTime - initialTime) / timeFrames;
-			        initialTime = currentTime;
-			        if (deltaUpdates >= 3) 
-			        {
-			            update();
-			            updates++;
-			            deltaUpdates--;
-			        }
-			        if (deltaFrames >= 1) 
-			        {
-			            render();
-			            frames++;
-			            deltaFrames--;
-			        }
-			        try
-			        {
-			        	thread.sleep(500);
-			        }
-			        catch(Exception e)
-			        {
-			        	
-			        }
-			        if (System.currentTimeMillis() - timer > 1000) 
-
-			            System.out.println(String.format("UPS: %s, FPS: %s", updates, frames));
-			            frames = 0;
-			            updates = 0;
-			            timer += 1000;
-			        }
-			    }
-
->>>>>>> origin/master
 	}
 	
 	public void update()
