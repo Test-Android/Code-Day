@@ -17,6 +17,7 @@ public class grid
 		this.playery = playery;
 		this.playernum = 2;
 		grid = new int[this.x][this.y];
+		grid[playerx][playery] = 2 ; 
 	}
 	public void drawgrid(Graphics g )
 	{
@@ -32,6 +33,10 @@ public class grid
 	}
 	public int getPositionNum(int x , int y ){return grid[x][y] ;}
 	
+	public void drawplayer(Graphics g , Image i )
+	{
+		g.drawImage(i, playery, playerx, mutiplyer16bit*2, mutiplyer16bit*2, null);
+	}
 	
 	
 }

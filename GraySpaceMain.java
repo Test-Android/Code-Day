@@ -1,13 +1,20 @@
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 
-public class GraySpaceMain
+public class GraySpaceMain extends JFrame
 {
+	public static final int WIDTH = 640;
+	public static final int HEIGHT = 480;
+	
 	public void bindKeys(JFrame jFrame, Player p)
 	{
 		JRootPane j = jFrame.getRootPane();
@@ -64,7 +71,7 @@ public class GraySpaceMain
 	}
 	public void update()
 	{
-		
+	
 	}
 	public static void main(String args[])
 	{
