@@ -101,10 +101,11 @@ public class Game extends JFrame implements Runnable
 	
 	public void update()
 	{
-		if(playerX + 1 < 640/16)
+/*		if(playerX + 1 < 640/16)
 			playerX++;
 		else
-			playerX = 1;
+			playerX = 1; */
+		grid.update();
 	}
 	
 	public void render()
@@ -131,6 +132,11 @@ public class Game extends JFrame implements Runnable
         		else if(grid.getPositionNum(x, y) == 2)
         		{
         			bbg.setColor(Color.WHITE);
+        			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
+        		}
+        		else if(grid.getPositionNum(x, y) == 1)
+        		{
+        			bbg.setColor(Color.BLACK);
         			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
         		}
         	}
