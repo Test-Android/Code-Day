@@ -19,9 +19,16 @@ public class Player
 		y = 0;
 		gravity = -1;
 	}
-	public void update()
+	public void update(int x, int y)
 	{
-		
+		if (left)
+		{
+			x-=16;
+		}
+		else if (right)
+		{
+			x+=16;
+		}
 	}
 	public void render()
 	{
