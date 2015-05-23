@@ -14,9 +14,10 @@ public class GraySpaceMain extends JFrame
 {
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 480;
-	
-	public static void bindKeys(JFrame jFrame, Player p)
+	static Player p;
+	public static void bindKeys(JFrame jFrame, Player a)
 	{
+		p = a;
 		JRootPane j = jFrame.getRootPane();
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressedUP");
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released W"), "releasedUP");
@@ -30,6 +31,8 @@ public class GraySpaceMain extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println("boop");
+				p.setUp(true);
 			}
 		});
 		j.getActionMap().put("releasedUP", new AbstractAction()
@@ -37,6 +40,9 @@ public class GraySpaceMain extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println("boop");
+
+				p.setUp(false);
 			}	
 		});
 				j.getActionMap().put("pressedLEFT", new AbstractAction()
@@ -44,6 +50,9 @@ public class GraySpaceMain extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println("boop");
+
+				p.setLeft(true);
 			}
 		});
 		j.getActionMap().put("releasedLEFT", new AbstractAction()
@@ -51,6 +60,9 @@ public class GraySpaceMain extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println("boop");
+
+				p.setLeft(false);
 			}	
 		});
 		
@@ -59,6 +71,9 @@ public class GraySpaceMain extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println("boop");
+
+				p.setRight(true);
 			}
 		});
 		j.getActionMap().put("releasedRIGHT", new AbstractAction()
@@ -66,6 +81,9 @@ public class GraySpaceMain extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println("boop");
+
+				p.setRight(false);
 			}	
 		});
 	}

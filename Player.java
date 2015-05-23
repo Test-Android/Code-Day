@@ -50,7 +50,7 @@ public class Player
 	{
 		left = b;
 	}
-	public void setright(boolean b)
+	public void setRight(boolean b)
 	{
 		right = b;
 	}
