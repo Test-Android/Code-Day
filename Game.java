@@ -15,7 +15,7 @@ public class Game extends JFrame implements Runnable
 	Graphics g;
 	Player player;
 	grid grid;
-	int x,y;
+	int playerX, playerY;
 	
 	public Game()
 	{
@@ -28,8 +28,8 @@ public class Game extends JFrame implements Runnable
 		backBuffer = new BufferedImage(640 + getInsets().right,480 + getInsets().bottom,BufferedImage.TYPE_INT_RGB);
 		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),0,0, getInsets().left, getInsets().top);
 		GraySpaceMain.bindKeys(this,player);
-		x = 0;
-		y = 0;
+		playerX = 1;
+		playerY = 0;
 		
 	}
 	
@@ -87,7 +87,10 @@ public class Game extends JFrame implements Runnable
 	
 	public void update()
 	{
-		grid.
+		if(playerX + 1 < 640/16)
+			playerX++;
+		else
+			playerX = 1;
 	}
 	
 	public void render()
@@ -101,7 +104,8 @@ public class Game extends JFrame implements Runnable
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
 //        grid.drawgrid(bbg);
-//       grid.setPositionNumAndDraw(bbg, 1, 1, 1);
+        grid.setPositionNumAndDraw(bbg, playerX, playerY, 2);
+        grid.setPositionNumAndDraw(bbg, playerX - 1, playerY, 0);
         for(int x = 0; x < 640/16; x++)
         {
         	for(int y = 0; y < 480/16; y++)
