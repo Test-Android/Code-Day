@@ -1,5 +1,4 @@
 
-
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -7,24 +6,11 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 
-public class GraySpaceMain extends JFrame
+public class GraySpaceMain
 {
-	private void initalize()
+	public void bindKeys(JFrame jFrame, Player p)
 	{
-		this.setTitle("Gray Space");
-		this.setBounds(0,0,640,480);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-		
-		bindKeys();
-		
-		Game game = new Game(this);
-		game.start();
-		
-		this.setVisible(true);
-	}
-	private void bindKeys()
-	{
-		JRootPane j = getRootPane();
+		JRootPane j = jFrame.getRootPane();
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressedUP");
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released W"), "releasedUP");
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("A"), "pressedLEFT");
@@ -82,7 +68,7 @@ public class GraySpaceMain extends JFrame
 	}
 	public static void main(String args[])
 	{
-		GraySpaceMain main = new GraySpaceMain();
-		main.initalize();
+		Game game = new Game();
+		game.start();
 	}
 }
