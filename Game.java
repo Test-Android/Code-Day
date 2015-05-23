@@ -56,6 +56,7 @@ public class Game extends JFrame implements Runnable
 		
 		while(running)
 		{
+<<<<<<< HEAD
 			update();
 			render();    
 			try
@@ -67,14 +68,52 @@ public class Game extends JFrame implements Runnable
 				e.printStackTrace();
 			}
 		}
+=======
+			long initialTime = System.nanoTime();
+			final double timeUpdates = 1000000000 / 60.0;
+			final double timeFrames = 1000000000 / 60.0;
+			double deltaUpdates = 0, deltaFrames = 0;
+			int frames = 0, updates = 0;
+			long timer = System.currentTimeMillis();
+
+			    while (running) 
+			    {
+
+			        long currentTime = System.nanoTime();
+			        deltaUpdates += (currentTime - initialTime) / timeUpdates;
+			        deltaFrames += (currentTime - initialTime) / timeFrames;
+			        initialTime = currentTime;
+			        if (deltaUpdates >= 3) 
+			        {
+			            update();
+			            updates++;
+			            deltaUpdates--;
+			        }
+			        if (deltaFrames >= 1) 
+			        {
+			            render();
+			            frames++;
+			            deltaFrames--;
+			        }
+
+			        if (System.currentTimeMillis() - timer > 1000) 
+
+			            System.out.println(String.format("UPS: %s, FPS: %s", updates, frames));
+			            frames = 0;
+			            updates = 0;
+			            timer += 1000;
+			        }
+			    }
+>>>>>>> origin/master
 	}
 	
 	public void update()
 	{
-		if(playerX + 1 < 640/16)
+/*		if(playerX + 1 < 640/16)
 			playerX++;
 		else
-			playerX = 1;
+			playerX = 1; */
+		grid.update();
 	}
 	
 	public void render()
@@ -101,6 +140,11 @@ public class Game extends JFrame implements Runnable
         		else if(grid.getPositionNum(x, y) == 2)
         		{
         			bbg.setColor(Color.WHITE);
+        			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
+        		}
+        		else if(grid.getPositionNum(x, y) == 1)
+        		{
+        			bbg.setColor(Color.BLACK);
         			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
         		}
         	}
