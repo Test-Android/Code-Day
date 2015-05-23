@@ -23,11 +23,11 @@ public class Player
 	{
 		if (left)
 		{
-			x-=16;
+			x-=1;
 		}
 		else if (right)
 		{
-			x+=16;
+			x+=1;
 		}
 	}
 	public void render()
