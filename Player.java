@@ -28,11 +28,11 @@ public class Player
 
 	public void update()
 	{
-		if (left)
+		if (left && x - 1 > -1)
 		{
 			x-=1;
 		}
-		else if (right)
+		else if (right && x + 1 < 30)
 		{
 			x+=1;
 		}
