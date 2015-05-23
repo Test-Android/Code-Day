@@ -1,4 +1,6 @@
 import java.awt.Graphics;
+import java.awt.Image;
+
 
 
 public class grid 
@@ -19,4 +21,14 @@ public class grid
 			for (int y = 0 ; x < this.y ; y ++)
 				g.drawRect(x*mutiplyer16bit, y*mutiplyer16bit, mutiplyer16bit, mutiplyer16bit);
 	}
+	public void setPositionNum(int x , int y, int num )
+	{
+		grid[x][y] = num ;
+	}
+	public int getPositionNum(int x , int y )
+	{
+		 return grid[x][y] ;
+	}
+	
+	
 }
