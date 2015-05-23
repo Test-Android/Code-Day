@@ -53,13 +53,10 @@ public class Game extends JFrame implements Runnable
 	
 	public void run()
 	{
-		Long lastTime = System.nanoTime();
-		final int MAX_FPS = 60;
-		final long BEST_TIME = 1000000000 / MAX_FPS;
-		long lastFPS = 0; 
 		
 		while(running)
 		{
+
 			long initialTime = System.nanoTime();
 			final double timeUpdates = 1000000000 / 60.0;
 			final double timeFrames = 1000000000 / 60.0;
@@ -74,14 +71,12 @@ public class Game extends JFrame implements Runnable
 			        deltaUpdates += (currentTime - initialTime) / timeUpdates;
 			        deltaFrames += (currentTime - initialTime) / timeFrames;
 			        initialTime = currentTime;
-
-			        if (deltaUpdates >= 1) 
+			        if (deltaUpdates >= 3) 
 			        {
 			            update();
 			            updates++;
 			            deltaUpdates--;
 			        }
-
 			        if (deltaFrames >= 1) 
 			        {
 			            render();
@@ -97,14 +92,16 @@ public class Game extends JFrame implements Runnable
 			            timer += 1000;
 			        }
 			    }
+
 	}
 	
 	public void update()
 	{
-		if(playerX + 1 < 640/16)
+/*		if(playerX + 1 < 640/16)
 			playerX++;
 		else
-			playerX = 1;
+			playerX = 1; */
+		grid.update();
 	}
 	
 	public void render()
@@ -116,9 +113,9 @@ public class Game extends JFrame implements Runnable
         /*bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);  
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
-
-        grid.setPositionNumAndDraw(bbg, playerX, playerY, 2);
-        grid.setPositionNumAndDraw(bbg, playerX - 1, playerY, 0);
+        int ten = 10 ;
+       grid.setPositionNumAndDraw(bbg, ten, 10, 1);
+      ten++;
         for(int x = 0; x < 640/16; x++)
         {
         	for(int y = 0; y < 480/16; y++)
@@ -131,6 +128,11 @@ public class Game extends JFrame implements Runnable
         		else if(grid.getPositionNum(x, y) == 2)
         		{
         			bbg.setColor(Color.WHITE);
+        			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
+        		}
+        		else if(grid.getPositionNum(x, y) == 1)
+        		{
+        			bbg.setColor(Color.BLACK);
         			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
         		}
         	}

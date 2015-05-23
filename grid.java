@@ -24,6 +24,10 @@ public class grid
 		this.playernum = 2;
 		grid = new int[this.x][this.y];
 		grid[playerx][playery] = 2 ; 
+		grid[2][3] = 1;
+		grid[3][3] = 1;
+		grid[4][3] = 1;
+		grid[5][3] = 1;
 	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )
 	{
@@ -40,12 +44,22 @@ public class grid
 		int ypostion;
 		ypostion =  y-1 ; 
 		while(ypostion < y -3)
-		ypostion = (int) Math.random()* y ; 
+			ypostion = (int) Math.random()* y ; 
 		
 		grid[x-1][ypostion] = 1; 
 		grid[x-1][ypostion+1] = 1; 
 		grid[x-1][ypostion+2] = 1; 
 		
 	}
-	
+	 public void update()
+	 {
+
+		for(int x = 0; x < this.x - 1; x++)
+		{
+			for(int y =0; y < this.y; y++)
+			{
+				grid[x][y] = grid[x + 1][y];
+			}
+		}
+	 }
 }
