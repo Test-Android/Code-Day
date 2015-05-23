@@ -54,33 +54,48 @@ public class Game extends JFrame implements Runnable
 	public void run()
 	{
 		long lastTime = System.nanoTime();
-		long timer  = System.nanoTime();
-		final double nanoSeconds = 1000000000.0 / 60.0;
-		double delta = 0;
+		//long timer  = System.nanoTime();
+		//final double nanoSeconds = 1000000000.0 / 60.0;
+		//double delta = 0;
 		int frames = 0;
 		int updates = 0;
+		requestFocus();
 		while(running)
 		{
-			long now = System.nanoTime();
-			delta+=(now - lastTime) / nanoSeconds;
-			lastTime = now;
-			while(delta >= 1)
+			if(System.nanoTime() - lastTime > 1000)
 			{
+				System.out.println("updating");
 				update();
 				updates++;
-				delta--;
 			}
+			long now = System.nanoTime();
+			lastTime = now;
 			render();
-			
 			frames++;
-			if(System.currentTimeMillis() - timer > 1000)
-			{
-				timer += 1000;
+			//System.out.println("RUNNING");
+			//long now = System.nanoTime();
+			//delta += (now - lastTime) / nanoSeconds;
+			//lastTime = now;
+			//while(delta >= 1)
+			//{
+				//System.out.println("running as well?");
+				//update();
+				//updates++;
+				//delta--;
+			//}
+			//render();
+			//frames++;
+			//System.out.println(timer);
+			//System.out.println(System.currentTimeMillis() - timer);
+			//if(System.nanoTime() - timer > 10000)
+			//{
+				//timer = System.nanoTime();
+				//System.out.println("YO  IT MADE A THING");
 				System.out.println("Updates: " + updates + ", Frames: " + frames);
 				setTitle(NAME + " | " + updates + " updates, " + frames + ", FPS");
 				updates = 0;
 				frames = 0;
-			}
+			//}
 		}
 		stop();
 	}
