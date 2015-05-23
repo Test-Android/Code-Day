@@ -74,14 +74,12 @@ public class Game extends JFrame implements Runnable
 			        deltaUpdates += (currentTime - initialTime) / timeUpdates;
 			        deltaFrames += (currentTime - initialTime) / timeFrames;
 			        initialTime = currentTime;
-
-			        if (deltaUpdates >= 1) 
+			        if (deltaUpdates >= 3) 
 			        {
 			            update();
 			            updates++;
 			            deltaUpdates--;
 			        }
-
 			        if (deltaFrames >= 1) 
 			        {
 			            render();

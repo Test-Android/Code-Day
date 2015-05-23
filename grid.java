@@ -53,12 +53,12 @@ public class grid
 	}
 	 public void update()
 	 {
-		 for(x = 1; x < this.x; x++)
-			 for(y = 0; y < this.y; y++)
-			 {
-				 if(grid[x][y] != 2)
-					 grid[x-1][y] = grid[x][y];
-			 }
-			 
+		for(int x = 0; x < this.x - 1; x++)
+		{
+			for(int y =0; y < this.y; y++)
+			{
+				grid[x][y] = grid[x + 1][y];
+			}
+		}
 	 }
 }
