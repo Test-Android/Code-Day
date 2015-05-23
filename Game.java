@@ -114,11 +114,10 @@ public class Game extends JFrame implements Runnable
         Graphics2D bbg = (Graphics2D)backBuffer.getGraphics();
         
 //        bbg.setColor(Color.WHITE);
-        /*bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);
-        
+        /*bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);  
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
-//        grid.drawgrid(bbg);
+
         grid.setPositionNumAndDraw(bbg, playerX, playerY, 2);
         grid.setPositionNumAndDraw(bbg, playerX - 1, playerY, 0);
         for(int x = 0; x < 640/16; x++)
