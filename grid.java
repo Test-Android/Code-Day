@@ -52,7 +52,6 @@ public class grid
 		 for(x = 1; x < this.x; x++)
 			 for(y = 0; y < this.y; y++)
 			 {
-				 if(grid[x][y] != 2 )
 				 grid[x-1][y] = grid[x][y];
 			 }
 			 
