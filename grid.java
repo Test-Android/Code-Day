@@ -8,22 +8,19 @@ public class grid
 {
 	int[][] grid ;
 	int x ,  y ;
-	int playerx, playery ,playernum;
 	final int mutiplyer16bit = 16 ;
 	int insetLeft;
 	int insetTop;
+	Player p;
 	
-	public grid(int xvalue , int yvalue, int playerx,int playery, int insetLeft, int insetTop)
+	public grid(int xvalue , int yvalue, Player p, int insetLeft, int insetTop)
 	{
 		this.insetLeft = insetLeft;
 		this.insetTop = insetTop;
 		this.x = xvalue ; 
 		this.y = yvalue ;
-		this.playerx = playerx ; 
-		this.playery = playery;
-		this.playernum = 2;
+		this.p = p;
 		grid = new int[this.x][this.y];
-		grid[playerx][playery] = 2 ; 
 		grid[2][3] = 1;
 		grid[3][3] = 1;
 		grid[4][3] = 1;
@@ -37,7 +34,16 @@ public class grid
 	
 	public void drawplayer(Graphics g , Image i )
 	{
-		g.drawImage(i, playery, playerx, mutiplyer16bit*2, mutiplyer16bit*2, null);
+//		g.drawImage(i, playery, playerx, mutiplyer16bit*2, mutiplyer16bit*2, null);
+	}
+	public void checkPlayer()
+	{
+		if(grid[p.getX()][p.getY() + 1] == 0)
+		{
+			grid[p.getX()][p.getY()] = 0;
+			grid[p.getX()][p.getY()+1] = 2;
+			p.setY(p.getY() + 1);
+		}
 	}
 	public void makenewcolumn()
 	{
@@ -62,5 +68,6 @@ public class grid
 					grid[x][y] = grid[x + 1][y];
 			}
 		}
+		checkPlayer();
 	 }
 }
