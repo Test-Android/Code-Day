@@ -20,11 +20,11 @@ public class grid
 		grid = new int[this.x][this.y];
 		grid[playerx][playery] = 2 ; 
 	}
-	public void drawgrid(Graphics2D g )
+	public void drawgrid(Graphics2D g, int left, int top )
 	{
 		for (int x = 0 ; x < this.x ; x ++)
 			for (int y = 0 ; y < this.y ; y ++)
-				g.drawRect(x*mutiplyer16bit, y*mutiplyer16bit, mutiplyer16bit, mutiplyer16bit);
+				g.drawRect(x*mutiplyer16bit + left, y*mutiplyer16bit + top, mutiplyer16bit, mutiplyer16bit);
 	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )
 	{
@@ -38,6 +38,9 @@ public class grid
 	{
 		g.drawImage(i, playery, playerx, mutiplyer16bit*2, mutiplyer16bit*2, null);
 	}
-	
+	public void makenewcolumn()
+	{
+		
+	}
 	
 }
