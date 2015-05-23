@@ -103,10 +103,6 @@ public class Game extends JFrame implements Runnable
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
 
-        grid.makenewcolumn();
-        grid.drawgrid(bbg);
-        grid.setPositionNumAndDraw(bbg, 1, 1, 1);
-//        grid.drawgrid(bbg);
         grid.setPositionNumAndDraw(bbg, playerX, playerY, 2);
         grid.setPositionNumAndDraw(bbg, playerX - 1, playerY, 0);
         for(int x = 0; x < 640/16; x++)
