@@ -12,6 +12,7 @@ public class Game extends JFrame implements Runnable
 	private boolean running = false;
 	BufferedImage backBuffer;
 	Graphics g;
+	Player player;
 	grid grid;
 	int x,y;
 	
@@ -21,10 +22,14 @@ public class Game extends JFrame implements Runnable
 		this.setBounds(0,0,GraySpaceMain.WIDTH,GraySpaceMain.HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		this.setVisible(true);
+		this.setResizable(false);
+		player = new Player();
 		backBuffer = new BufferedImage(640,480,BufferedImage.TYPE_INT_RGB);
+		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),0,0);
+		GraySpaceMain.bindKeys(this,player);
 		x = 0;
 		y = 0;
-		grid = new grid(GraySpaceMain.WIDTH / 16, GraySpaceMain.HEIGHT / 16, 0, 0);
+		
 	}
 	
 	public synchronized void start()
@@ -71,10 +76,7 @@ public class Game extends JFrame implements Runnable
         
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
-        grid.drawgrid(bbg);
+        grid.drawgrid(bbg,getInsets().left,getInsets().top);
         g.drawImage(backBuffer, 0, 0, this); 
-        
-        
 	}
-
 }

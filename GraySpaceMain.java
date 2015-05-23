@@ -15,7 +15,7 @@ public class GraySpaceMain extends JFrame
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 480;
 	
-	public void bindKeys(JFrame jFrame, Player p)
+	public static void bindKeys(JFrame jFrame, Player p)
 	{
 		JRootPane j = jFrame.getRootPane();
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("W"), "pressedUP");
