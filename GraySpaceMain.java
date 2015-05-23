@@ -12,14 +12,9 @@ import javax.swing.KeyStroke;
 
 public class GraySpaceMain extends JFrame
 {
-	BufferedImage backBuffer;
-	public GraySpaceMain()
-	{
-		this.setBounds(0,0,500,500);
-		this.setVisible(true);
-		backBuffer = new BufferedImage(640,480,BufferedImage.TYPE_INT_RGB);
-		update();
-	}
+	public static final int WIDTH = 640;
+	public static final int HEIGHT = 480;
+	
 	public void bindKeys(JFrame jFrame, Player p)
 	{
 		JRootPane j = jFrame.getRootPane();
@@ -76,21 +71,11 @@ public class GraySpaceMain extends JFrame
 	}
 	public void update()
 	{
-		Graphics2D g = (Graphics2D)getGraphics();
-        Graphics2D bbg = (Graphics2D)backBuffer.getGraphics();
-        
-        bbg.setColor(Color.WHITE);
-        bbg.fillRect(0, 0, 500, 500);
-        
-        bbg.setColor(Color.black);
-        bbg.fillRect(100, 100, 50, 50);
-
-        g.drawImage(backBuffer, 0, 0, this); 
+	
 	}
 	public static void main(String args[])
 	{
-		GraySpaceMain g = new GraySpaceMain();
-//		Game game = new Game();
-//		game.start();
+		Game game = new Game();
+		game.start();
 	}
 }
