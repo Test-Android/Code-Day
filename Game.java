@@ -11,7 +11,6 @@ public class Game implements Runnable
 	
 	public Game(JFrame frame)
 	{
-		frame.setVisible(true);
 	}
 	
 	public synchronized void start()
