@@ -1,12 +1,11 @@
 import javax.swing.JFrame;
 
-//made at coday!!
 public class GraySpaceMain extends JFrame
 {
 	private void initalize()
 	{
 		this.setTitle("Gray Space");
-		this.setBounds(0,0,500,500);
+		this.setBounds(0,0,640,480);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
