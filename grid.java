@@ -58,7 +58,8 @@ public class grid
 		{
 			for(int y =0; y < this.y; y++)
 			{
-				grid[x][y] = grid[x + 1][y];
+				if(grid[x][y] != 2)
+					grid[x][y] = grid[x + 1][y];
 			}
 		}
 	 }
