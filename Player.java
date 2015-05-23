@@ -9,26 +9,30 @@ public class Player
 				y;
 	private int gravity;
 	
-	public player()
+	public  Player()
+	{
+		up = false;
+		left = false;
+		right = false;
+		alive = true;
+		x = 0;
+		y = 0;
+		gravity = -1;
+	}
+	public void update()
 	{
 		
 	}
-	public update()
-	{
-		
-	}
-	public render()
+	public void render()
 	{
 		
 	}
 	public int getX()
 	{
-		int x = 0;
 		return x;
 	}
 	public int getY()
 	{
-		int y = 0;
 		return y;
 	}
 	
