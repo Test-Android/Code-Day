@@ -1,13 +1,18 @@
 import javax.swing.JFrame;
 
 //made at coday!!
-public class GraySpaceMain 
+public class GraySpaceMain extends JFrame
 {
+	private void initalize()
+	{
+		this.setTitle("Gray Space");
+		this.setBounds(0,0,500,500);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+	}
 	public static void main(String args[])
 	{
-		JFrame main = new JFrame("This thing");
-		main.setBounds(0,0,500,500);
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main.setVisible(true);
+		GraySpaceMain main = new GraySpaceMain();
+		main.initalize();
 	}
 }
