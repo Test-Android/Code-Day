@@ -9,25 +9,25 @@ public class Player
 				y;
 	private int gravity;
 	
-	public  Player()
+	public  Player(int x,int y)
 	{
 		up = false;
 		left = false;
 		right = false;
 		alive = true;
-		x = 0;
-		y = 0;
+		this.x = x;
+		this.y = y;
 		gravity = -1;
 	}
-	public void update(int x, int y)
+	public void update()
 	{
 		if (left)
 		{
-			x-=16;
+			x-=1;
 		}
 		else if (right)
 		{
-			x+=16;
+			x+=1;
 		}
 	}
 	public void render()
