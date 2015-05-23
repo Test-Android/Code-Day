@@ -19,13 +19,13 @@ public class Game extends JFrame implements Runnable
 	public Game()
 	{
 		this.setTitle("Gray Space");
-		this.setBounds(0,0,GraySpaceMain.WIDTH,GraySpaceMain.HEIGHT);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		this.setVisible(true);
 		this.setResizable(false);
+		this.setBounds(0,0,GraySpaceMain.WIDTH + getInsets().right,GraySpaceMain.HEIGHT + getInsets().bottom);
 		player = new Player();
-		backBuffer = new BufferedImage(640,480,BufferedImage.TYPE_INT_RGB);
-		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),0,0);
+		backBuffer = new BufferedImage(640 + getInsets().right,480 + getInsets().bottom,BufferedImage.TYPE_INT_RGB);
+		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),0,0, getInsets().left, getInsets().top);
 		GraySpaceMain.bindKeys(this,player);
 		x = 0;
 		y = 0;
@@ -76,7 +76,8 @@ public class Game extends JFrame implements Runnable
         
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
-        grid.drawgrid(bbg,getInsets().left,getInsets().top);
+        grid.drawgrid(bbg);
+        grid.setPositionNumAndDraw(bbg, 1, 1, 1);
         g.drawImage(backBuffer, 0, 0, this); 
 	}
 }

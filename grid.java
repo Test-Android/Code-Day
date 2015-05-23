@@ -10,8 +10,13 @@ public class grid
 	int x ,  y ;
 	int playerx, playery ,playernum;
 	final int mutiplyer16bit = 16 ;
-	public grid(int xvalue , int yvalue, int playerx,int playery)
+	int insetLeft;
+	int insetTop;
+	
+	public grid(int xvalue , int yvalue, int playerx,int playery, int insetLeft, int insetTop)
 	{
+		this.insetLeft = insetLeft;
+		this.insetTop = insetTop;
 		this.x = xvalue ; 
 		this.y = yvalue ;
 		this.playerx = playerx ; 
@@ -20,16 +25,16 @@ public class grid
 		grid = new int[this.x][this.y];
 		grid[playerx][playery] = 2 ; 
 	}
-	public void drawgrid(Graphics2D g, int left, int top )
+	public void drawgrid(Graphics2D g)
 	{
 		for (int x = 0 ; x < this.x ; x ++)
 			for (int y = 0 ; y < this.y ; y ++)
-				g.drawRect(x*mutiplyer16bit + left, y*mutiplyer16bit + top, mutiplyer16bit, mutiplyer16bit);
+				g.drawRect(x*mutiplyer16bit + insetLeft, y*mutiplyer16bit + insetTop, mutiplyer16bit, mutiplyer16bit);
 	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )
 	{
 		grid[x][y] = num ;
-		g.fillRect(x*mutiplyer16bit, y*mutiplyer16bit, mutiplyer16bit, mutiplyer16bit);
+		g.fillRect(x*mutiplyer16bit + insetLeft, y*mutiplyer16bit + insetTop, mutiplyer16bit, mutiplyer16bit);
 		
 	}
 	public int getPositionNum(int x , int y ){return grid[x][y] ;}
