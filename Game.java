@@ -56,19 +56,7 @@ public class Game extends JFrame implements Runnable
 		
 		while(running)
 		{
-<<<<<<< HEAD
-			update();
-			render();    
-			try
-			{
-				Thread.sleep(17)   ;
-			} catch (InterruptedException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-=======
+
 			long initialTime = System.nanoTime();
 			final double timeUpdates = 1000000000 / 60.0;
 			final double timeFrames = 1000000000 / 60.0;
@@ -104,7 +92,7 @@ public class Game extends JFrame implements Runnable
 			            timer += 1000;
 			        }
 			    }
->>>>>>> origin/master
+
 	}
 	
 	public void update()
