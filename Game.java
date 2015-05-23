@@ -11,7 +11,7 @@ public class Game implements Runnable
 	
 	public Game(JFrame frame)
 	{
-		
+		frame.setVisible(true);
 	}
 	
 	public synchronized void start()
@@ -36,7 +36,7 @@ public class Game implements Runnable
 	{
 		while(running)
 		{
-			
+			System.out.println("RUNNING");
 		}
 		stop();
 	}
