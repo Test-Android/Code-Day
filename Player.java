@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 
 public class Player
 {
@@ -8,8 +11,10 @@ public class Player
 	private int x,
 				y;
 	private int gravity;
+	private int insetsLeft,
+				insetsTop;
 	
-	public  Player(int x,int y)
+	public Player(int x,int y, int insetsLeft, int insetsTop)
 	{
 		up = false;
 		left = false;
@@ -17,8 +22,10 @@ public class Player
 		alive = true;
 		this.x = x;
 		this.y = y;
-		gravity = -1;
+		this.insetsLeft = insetsLeft;
+		this.insetsTop = insetsTop;
 	}
+
 	public void update()
 	{
 		if (left)
@@ -30,9 +37,14 @@ public class Player
 			x+=1;
 		}
 	}
-	public void render()
+	public void render(Graphics2D bbg)
 	{
-		
+		if(alive)
+		{
+			bbg.setColor(Color.WHITE);
+			bbg.fillRect(x*16 + insetsLeft, y*16  + insetsTop, 16, 16);
+		}
+
 	}
 	public int getX()
 	{
@@ -61,5 +73,9 @@ public class Player
 	public void setRight(boolean b)
 	{
 		right = b;
+	}
+	public void setState(boolean b)
+	{
+		alive = b;
 	}
 }
