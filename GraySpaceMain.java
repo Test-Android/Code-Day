@@ -19,6 +19,8 @@ public class GraySpaceMain extends JFrame
 		
 		Game game = new Game(this);
 		game.start();
+		
+		this.setVisible(true);
 	}
 	private void bindKeys()
 	{
