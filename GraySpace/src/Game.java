@@ -4,8 +4,11 @@ package GraySpace.src;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 //this is the main game thread class
@@ -92,7 +95,13 @@ public class Game extends JFrame implements Runnable
         /*bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);  
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
+        BufferedImage hero = null;
+        try
+        {
+        	hero = ImageIO.read(new File("Code-Day/GraySpace/res/BackGround.png"));
+        } catch(Exception e){}
         bbg.clearRect(0, 0,640 + getInsets().right, getInsets().bottom + 480);
+        bbg.drawImage(hero,getInsets().top,getInsets().left,hero.getWidth(),hero.getHeight(),null);
         grid.render(bbg);
         g.drawImage(backBuffer, 0, 0, this); 
 	}
