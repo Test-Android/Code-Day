@@ -106,13 +106,15 @@ public class grid
 	 }
 	 public void render(Graphics2D bbg)
 	 {
+		
 		for(int x = 0; x < this.x; x++)
 		{
 			for(int y = 0; y < this.y; y++)
 			{
 				if(grid[x][y] == 0)
 	       		{
-	       			bbg.setColor(Color.GRAY);
+					Color colorcolor = new Color ((int)(Math.random()*250), (int)(Math.random()*250), (int)(Math.random()*250));
+	       			bbg.setColor(colorcolor);
 	       			bbg.fillRect(x *16 + insetLeft, y*16 + insetTop,16,16);
 	       		}
 	       		else if(grid[x][y] == 1)
