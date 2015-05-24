@@ -13,7 +13,10 @@ public class grid
 	int insetLeft;
 	int insetTop;
 	Player p;
-	 
+	boolean creatingRow = false;
+	int rowX = 0;
+	int rowY = 0;
+	int rowPhase = 0;
 	public grid(int xvalue , int yvalue, Player p, int insetLeft, int insetTop)
 	{
 		this.insetLeft = insetLeft;
@@ -50,15 +53,47 @@ public class grid
 	}
 	public void makenewcolumn()
 	{
-		int ypostion;
-		ypostion =  y-1 ; 
-		while(ypostion < y -3)
-			ypostion = (int) Math.random()* y ; 
-		
-		grid[x-1][ypostion] = 1; 
-		grid[x-1][ypostion+1] = 1; 
-		grid[x-1][ypostion+2] = 1; 
-		
+		if(creatingRow)
+		{
+			if(rowPhase < 4)
+			{
+				rowPhase++;
+				grid[rowX][rowY] = 1;
+			}
+			else
+				creatingRow = false;
+		}
+		else
+		{
+			creatingRow = true;
+			rowPhase = 0;
+			rowX = 29;
+			int dir = (int)(Math.random() * 2);
+			if(dir == 1)
+			{
+				int spot = (int)(Math.random() * 3) + 1;
+				if(spot + p.getY() < 640/16)
+				{
+					rowY = spot + p.getY();
+				}
+				else
+				{
+					rowY = p.getY(); 
+				}
+			}
+			else
+			{
+				int spot = (int)(Math.random() * 3) + 1;
+				if(spot - p.getY() > 0)
+				{
+					rowY = spot - p.getY();
+				}
+				else
+				{
+					rowY = p.getY(); 
+				}
+			}
+		}
 	}
 	 public void update()
 	 {
@@ -71,6 +106,7 @@ public class grid
 			}
 		}
 		updatePlayer();
+		makenewcolumn();
 	 }
 	 public void render(Graphics2D bbg)
 	 {
