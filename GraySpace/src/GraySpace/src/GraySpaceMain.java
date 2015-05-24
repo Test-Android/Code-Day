@@ -1,19 +1,4 @@
 package GraySpace.src;
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD:GraySpace/src/GraySpace/src/GraySpaceMain.java
-<<<<<<< HEAD:GraySpace/src/GraySpace/src/GraySpaceMain.java
-
-
-=======
->>>>>>> origin/master:GraySpace/src/GraySpaceMain.java
-=======
-
-
-
->>>>>>> parent of ff39dbe... ehos:GraySpace/src/GraySpaceMain.java
->>>>>>> origin/master
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
