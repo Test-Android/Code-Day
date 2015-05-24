@@ -1,9 +1,5 @@
 package GraySpace.src;
-<<<<<<< HEAD:GraySpace/src/GraySpace/src/GraySpaceMain.java
 
-
-=======
->>>>>>> origin/master:GraySpace/src/GraySpaceMain.java
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
