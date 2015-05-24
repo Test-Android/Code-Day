@@ -1,16 +1,11 @@
-package GraySpace.src;
-
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-
-//do you like the code
 public class Player
 {
 	private boolean up,
 					left,
-					right,
-					down;
+					right;
 	private boolean alive;
 	private int x,
 				y;
@@ -23,7 +18,6 @@ public class Player
 		up = false;
 		left = false;
 		right = false;
-		down = false;
 		alive = true;
 		this.x = x;
 		this.y = y;
@@ -40,14 +34,6 @@ public class Player
 		else if (right && x + 1 < 30)
 		{
 			x+=1;
-		}
-		if(up && y - 1 > -1 )
-		{
-			y-=1;
-		}
-		else if(down && y + 1 < 30)
-		{
-			y+=1;
 		}
 	}
 	public void render(Graphics2D bbg)
@@ -86,10 +72,6 @@ public class Player
 	public void setRight(boolean b)
 	{
 		right = b;
-	}
-	public void setDown(boolean b)
-	{
-		down = b;
 	}
 	public void setState(boolean b)
 	{

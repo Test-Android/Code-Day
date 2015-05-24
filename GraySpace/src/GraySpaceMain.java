@@ -1,19 +1,4 @@
-package GraySpace.src;
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD:GraySpace/src/GraySpace/src/GraySpaceMain.java
-<<<<<<< HEAD:GraySpace/src/GraySpace/src/GraySpaceMain.java
-
-
-=======
->>>>>>> origin/master:GraySpace/src/GraySpaceMain.java
-=======
-
-
-
->>>>>>> parent of ff39dbe... ehos:GraySpace/src/GraySpaceMain.java
->>>>>>> origin/master
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -40,8 +25,6 @@ public class GraySpaceMain extends JFrame
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released A"), "releasedLEFT");
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("D"), "pressedRIGHT");
 		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released D"), "releasedRIGHT");
-		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("S"), "pressedDOWN");
-		j.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released S"), "releasedDOWN");
 
 		j.getActionMap().put("pressedUP", new AbstractAction()
 		{
@@ -101,26 +84,6 @@ public class GraySpaceMain extends JFrame
 				System.out.println("boop");
 
 				p.setRight(false);
-			}	
-		});
-		j.getActionMap().put("pressedDOWN", new AbstractAction()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				System.out.println("boop");
-
-				p.setDown(true);
-			}
-		});
-		j.getActionMap().put("releasedDOWN", new AbstractAction()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				System.out.println("boop");
-
-				p.setDown(false);
 			}	
 		});
 	}

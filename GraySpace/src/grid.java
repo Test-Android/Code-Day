@@ -1,5 +1,3 @@
-package GraySpace.src;
-
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -16,10 +14,10 @@ public class grid
 	int insetLeft;
 	int insetTop;
 	Player p;
-	boolean createColumn = false;
-	int columnX = 0;
-	int columnY = 0;
-	int colPhase = 0;
+	boolean creatingRow = false;
+	int rowX = 0;
+	int rowY = 0;
+	int rowPhase = 0;
 	public grid(int xvalue , int yvalue, Player p, int insetLeft, int insetTop)
 	{
 		this.insetLeft = insetLeft;
@@ -28,6 +26,10 @@ public class grid
 		this.y = yvalue ;
 		this.p = p;
 		grid = new int[this.x][this.y];
+		grid[2][3] = 1;
+		grid[3][3] = 1;
+		grid[4][3] = 1;
+		grid[5][3] = 1;
 	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )
 	{
@@ -43,53 +45,51 @@ public class grid
 	{
 		if(grid[p.getX() + 1][p.getY()] == 1)
 		{
-			 if(p.getX() - 1 < 0)
-			 {
-				 p.setState(false);
-			 }
-			 else
-			 {
-				 p.setX(p.getX() - 2);
-			 }
+			p.setX(p.getX() - 1);
 		}
-		p.update();
 	}
 	public void makenewcolumn()
 	{
-		if(createColumn)
+		if(creatingRow)
 		{
-			if(colPhase == 3)
+			if(rowPhase < 4)
 			{
-				createColumn = false;
+				rowPhase++;
+				grid[rowX][rowY] = 1;
 			}
 			else
-				colPhase ++;
+				creatingRow = false;
 		}
 		else
 		{
-			createColumn = true;
-			columnX = 640/16 - 1;
-			columnY = (int)(Math.random() * 480/16);
-//			System.out.println("ColY: " + columnY);
-			int length = (int)(Math.random() * 3) + 3;
-//			System.out.println("Length: " + length);
-			colPhase = 0;
-			int count = 0;
-			boolean cont = true;
-			while(count <= length && cont)
+			creatingRow = true;
+			rowPhase = 0;
+			rowX = 29;
+			int dir = (int)(Math.random() * 2);
+			if(dir == 1)
 			{
-				if(columnY + count < this.y)
+				int spot = (int)(Math.random() * 3) + 1;
+				if(spot + p.getY() < 640/16)
 				{
-					grid[columnX][columnY + count] = 1;
-					
-					count++;
+					rowY = spot + p.getY();
 				}
 				else
 				{
-					cont = false;
+					rowY = p.getY(); 
 				}
 			}
-				
+			else
+			{
+				int spot = (int)(Math.random() * 3) + 1;
+				if(spot - p.getY() > 0)
+				{
+					rowY = spot - p.getY();
+				}
+				else
+				{
+					rowY = p.getY(); 
+				}
+			}
 		}
 	}
 	 public void update()
@@ -107,15 +107,13 @@ public class grid
 	 }
 	 public void render(Graphics2D bbg)
 	 {
-		
 		for(int x = 0; x < this.x; x++)
 		{
 			for(int y = 0; y < this.y; y++)
 			{
 				if(grid[x][y] == 0)
 	       		{
-					Color colorcolor = new Color ((int)(Math.random()*20+75), (int)(Math.random()*20+75), (int)(Math.random()*20+150));
-	       			bbg.setColor(colorcolor);
+	       			bbg.setColor(Color.GRAY);
 	       			bbg.fillRect(x *16 + insetLeft, y*16 + insetTop,16,16);
 	       		}
 	       		else if(grid[x][y] == 1)
