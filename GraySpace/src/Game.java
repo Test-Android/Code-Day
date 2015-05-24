@@ -1,3 +1,6 @@
+package GraySpace.src;
+
+//what do you want from me
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
