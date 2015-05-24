@@ -3,7 +3,7 @@ package GraySpace.src;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-
+//do you like the code
 public class Player
 {
 	private boolean up,
