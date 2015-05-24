@@ -98,7 +98,7 @@ public class Game extends JFrame implements Runnable
         BufferedImage hero = null;
         try
         {
-        	hero = ImageIO.read(new File("/GraySpace/res/blockblack.png"));
+        	hero = ImageIO.read(new File("Code-Day/GraySpace/res/BackGround.png"));
         } catch(Exception e){}
         bbg.clearRect(0, 0,640 + getInsets().right, getInsets().bottom + 480);
         bbg.drawImage(hero,getInsets().top,getInsets().left,hero.getWidth(),hero.getHeight(),null);
