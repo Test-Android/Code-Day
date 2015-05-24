@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="GraySpace/res/|GraySpace/bin/" kind="src" path=""/>
+	<classpathentry excluding="GraySpace/res/|GraySpace/bin/|GraySpace/|GraySpace/src/|GraySpace/res/" kind="src" path=""/>
 	<classpathentry kind="src" path="GraySpace/bin"/>
+	<classpathentry kind="src" path="GraySpace/src"/>
+	<classpathentry kind="src" path="GraySpace/res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

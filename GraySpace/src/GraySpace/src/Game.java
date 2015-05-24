@@ -1,5 +1,6 @@
 package GraySpace.src;
 
+
 //what do you want from me
 import java.awt.Color;
 import java.awt.Graphics;
@@ -95,13 +96,13 @@ public class Game extends JFrame implements Runnable
         /*bbg.fillRect(0, 0, GraySpaceMain.WIDTH, GraySpaceMain.HEIGHT);  
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
-        BufferedImage hero = null;
+/*        BufferedImage hero = null;
         try
         {
-        	hero = ImageIO.read(new File("Code-Day/GraySpace/res/BackGround.png"));
-        } catch(Exception e){}
+        	hero = ImageIO.read(new File("Code-Day/GraySpace/res/randome3.png"));
+        } catch(Exception e){} */
         bbg.clearRect(0, 0,640 + getInsets().right, getInsets().bottom + 480);
-        bbg.drawImage(hero,getInsets().top,getInsets().left,hero.getWidth(),hero.getHeight(),null);
+//        bbg.drawImage(hero,getInsets().top,getInsets().left,hero.getWidth(),hero.getHeight(),null);
         grid.render(bbg);
         g.drawImage(backBuffer, 0, 0, this); 
 	}
