@@ -27,10 +27,6 @@ public class grid
 		this.y = yvalue ;
 		this.p = p;
 		grid = new int[this.x][this.y];
-		grid[2][3] = 1;
-		grid[3][3] = 1;
-		grid[4][3] = 1;
-		grid[5][3] = 1;
 	}
 	public void setPositionNumAndDraw(Graphics g,int x , int y, int num )
 	{
@@ -46,7 +42,14 @@ public class grid
 	{
 		if(grid[p.getX() + 1][p.getY()] == 1)
 		{
-			
+			 if(p.getX() - 1 < 0)
+			 {
+				 p.setState(false);
+			 }
+			 else
+			 {
+				 p.setX(p.getX() - 2);
+			 }
 		}
 		p.update();
 	}
@@ -66,15 +69,15 @@ public class grid
 			createColumn = true;
 			columnX = 640/16 - 1;
 			columnY = (int)(Math.random() * 480/16);
-			System.out.println("ColY: " + columnY);
-			int length = (int)(Math.random() * 3) * 2;
-			System.out.println("Length: " + length);
+//			System.out.println("ColY: " + columnY);
+			int length = (int)(Math.random() * 3) + 3;
+//			System.out.println("Length: " + length);
 			colPhase = 0;
 			int count = 0;
 			boolean cont = true;
 			while(count <= length && cont)
 			{
-				if(columnY + count < this.x - 1)
+				if(columnY + count < this.y)
 				{
 					grid[columnX][columnY + count] = 1;
 					
