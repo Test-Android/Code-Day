@@ -113,7 +113,7 @@ public class grid
 			{
 				if(grid[x][y] == 0)
 	       		{
-					Color colorcolor = new Color ((int)(Math.random()*250), (int)(Math.random()*250), (int)(Math.random()*250));
+					Color colorcolor = new Color ((int)(Math.random()*20+75), (int)(Math.random()*20+75), (int)(Math.random()*20+150));
 	       			bbg.setColor(colorcolor);
 	       			bbg.fillRect(x *16 + insetLeft, y*16 + insetTop,16,16);
 	       		}
