@@ -9,7 +9,7 @@ import java.awt.Image;
 
 public class grid 
 {
-	int[][] grid ;
+	static int[][] grid ;
 	int x ,  y ;
 	final int mutiplyer16bit = 16 ;
 	int insetLeft;
@@ -40,17 +40,6 @@ public class grid
 	}
 	public void updatePlayer()
 	{
-		if(grid[p.getX() + 1][p.getY()] == 1)
-		{
-			 if(p.getX() - 1 < 0)
-			 {
-				 p.setState(false);
-			 }
-			 else
-			 {
-				 p.setX(p.getX() - 2);
-			 }
-		}
 		p.update();
 	}
 	public void makenewcolumn()

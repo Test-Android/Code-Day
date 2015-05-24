@@ -32,21 +32,157 @@ public class Player
 
 	public void update()
 	{
-		if (left && x - 1 > -1)
+		if(up && right)
 		{
-			x-=1;
+			if((grid.grid[x + 1][y] == 1) || (grid.grid[x][y -= 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
+			else if((grid.grid[x - 1][y] == 1) || (grid.grid[x][y += 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
 		}
-		else if (right && x + 1 < 30)
+		
+		if(down && right)
 		{
-			x+=1;
+			if((grid.grid[x + 1][y] == 1) || (grid.grid[x][y += 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
+			else if((grid.grid[x + 1][y] == 1) || (grid.grid[x][y -= 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
 		}
-		if(up && y - 1 > -1 )
+		
+		if(right && up)
 		{
-			y-=1;
+			if((grid.grid[x + 1][y] == 1) || (grid.grid[x][y -= 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
+			else if((grid.grid[x - 1][y] == 1) || (grid.grid[x][y += 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
 		}
-		else if(down && y + 1 < 30)
+		
+		if(right && down)
 		{
-			y+=1;
+			if((grid.grid[x + 1][y] == 1) || (grid.grid[x][y += 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
+			else if((grid.grid[x + 1][y] == 1) || (grid.grid[x][y -= 1] == 1))
+			{
+				x = x;
+				y = y;
+			}
+		}
+		else
+		if(right)
+			if(x + 1 < 30)
+			{
+				if(grid.grid[x + 1][y] == 1)
+				{
+					x -= 1;
+					System.out.println("cant move right");
+				}
+				else
+				{
+					x += 1;
+				}
+			}
+			else if(grid.grid[x + 1][y] == 1)
+			{
+				x -= x;
+			}
+			else
+			{
+				x = x;
+			}
+		
+		else if(left)
+			if(x - 1 > 0)
+			{
+				if(grid.grid[x - 1][y] == 1)
+				{
+					x += 1;
+					System.out.println("cant move left");
+				}
+				else
+				{
+					x -= 1;
+				}
+			}
+			else
+			{
+				x = x;
+			}
+		
+		if(up)
+			if(y - 1 > 0)
+			{
+				if(grid.grid[x][y - 1] == 1)
+				{
+					y = y;
+				}
+				else if(grid.grid[x + 1][y] == 1)
+				{
+					x -= 1;
+					y -= 1;
+				}
+				else
+				{
+					y -= 1;
+				}
+			}
+			else
+			{
+				y = y;
+			}
+	
+		else if(down)
+		{
+			if(y + 1 < 29)
+			{
+				if(grid.grid[x][y + 1] == 1)
+				{
+					y = y;
+				}
+				else if(grid.grid[x + 1][y] == 1)
+				{
+					x -= 1;
+					y += 1;
+
+				} 
+				else
+				{
+					y += 1;
+				}
+			}
+			else
+			{
+				y = y;
+			}
+		}
+		
+		
+		
+		if(!right && !down && !up && !left)
+		{
+			if(grid.grid[x + 1][y] == 1)
+			{
+				x -= 1;
+			}
 		}
 	}
 	public void render(Graphics2D bbg)
