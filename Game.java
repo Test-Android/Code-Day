@@ -15,7 +15,6 @@ public class Game extends JFrame implements Runnable
 	Graphics g;
 	Player player;
 	grid grid;
-	int playerX, playerY;
 	
 	public Game()
 	{
@@ -24,11 +23,10 @@ public class Game extends JFrame implements Runnable
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setBounds(0,0,GraySpaceMain.WIDTH + getInsets().right,GraySpaceMain.HEIGHT + getInsets().bottom);
-		player = new Player(1,1);
 		backBuffer = new BufferedImage(640 + getInsets().right,480 + getInsets().bottom,BufferedImage.TYPE_INT_RGB);
+		player = new Player(1,1,getInsets().left,getInsets().top);
 		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),player, getInsets().left, getInsets().top);
 		GraySpaceMain.bindKeys(this,player);
-		
 	}
 	
 	public synchronized void start()
@@ -64,7 +62,7 @@ public class Game extends JFrame implements Runnable
 			
 			//the lower this is the faster the game will go...
 			//250 would be 1/4 of a second... 500 would be a half... 
-			if(nowMilis - lastMilis > 10)
+			if(nowMilis - lastMilis > 200)
 			{
 				update();
 				lastTime = now;
@@ -92,27 +90,7 @@ public class Game extends JFrame implements Runnable
         bbg.setColor(Color.black);
         bbg.fillRect(x, y, 32, 32);*/
         bbg.clearRect(0, 0,640 + getInsets().right, getInsets().bottom + 480);
-        for(int x = 0; x < 640/16; x++)
-        {
-        	for(int y = 0; y < 480/16; y++)
-        	{
-        		if(grid.getPositionNum(x, y) == 0)
-        		{
-        			bbg.setColor(Color.GRAY);
-        			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
-        		}
-        		else if(grid.getPositionNum(x, y) == 2)
-        		{
-        			bbg.setColor(Color.WHITE);
-        			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
-        		}
-        		else if(grid.getPositionNum(x, y) == 1)
-        		{
-        			bbg.setColor(Color.BLACK);
-        			bbg.fillRect(getInsets().left + (x *16), getInsets().top + (y*16),16,16);
-        		}
-        	}
-        }
+        grid.render(bbg);
         g.drawImage(backBuffer, 0, 0, this); 
 	}
 }

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -36,14 +37,17 @@ public class grid
 	{
 //		g.drawImage(i, playery, playerx, mutiplyer16bit*2, mutiplyer16bit*2, null);
 	}
-	public void checkPlayer()
+	public void updatePlayer()
 	{
-		if(grid[p.getX()][p.getY() + 1] == 0)
+		
+		if(grid[p.getX()][p.getY() + 1] != 1)
 		{
-			grid[p.getX()][p.getY()] = 0;
-			grid[p.getX()][p.getY()+1] = 2;
-			p.setY(p.getY() + 1);
+			if(p.getY() + 1 < 29)
+				p.setY(p.getY() + 1);
+			else
+				p.setState(false);
 		}
+		p.update();
 	}
 	public void makenewcolumn()
 	{
@@ -64,10 +68,31 @@ public class grid
 		{
 			for(int y =0; y < this.y; y++)
 			{
-				if(grid[x][y] != 2)
-					grid[x][y] = grid[x + 1][y];
+				grid[x][y] = grid[x + 1][y];
+				grid[x + 1][y]  = 0;
 			}
 		}
-		checkPlayer();
+		updatePlayer();
+	 }
+	 public void render(Graphics2D bbg)
+	 {
+		for(int x = 0; x < this.x; x++)
+		{
+			for(int y = 0; y < this.y; y++)
+			{
+        		if(grid[x][y] == 0)
+        		{
+        			bbg.setColor(Color.GRAY);
+        			bbg.fillRect(x *16 + insetLeft, y*16 + insetTop,16,16);
+        		}
+        		else if(grid[x][y] == 1)
+        		{
+        			bbg.setColor(Color.BLACK);
+        			bbg.fillRect(x *16 + insetLeft, y*16 + insetTop,16,16);
+        		}
+        	}
+	    }
+		p.render(bbg);
+
 	 }
 }
