@@ -53,50 +53,26 @@ public class Game extends JFrame implements Runnable
 	
 	public void run()
 	{
-		Long lastTime = System.nanoTime();
-		final int MAX_FPS = 60;
-		final long BEST_TIME = 1000000000 / MAX_FPS;
-		long lastFPS = 0; 
-		
+		long lastTime = System.nanoTime();
+		long now = 0;
+		long nowMilis = 0;
+		long lastMilis = 0;
+
 		while(running)
 		{
-			long initialTime = System.nanoTime();
-			final double timeUpdates = 1000000000 / 60.0;
-			final double timeFrames = 1000000000 / 60.0;
-			double deltaUpdates = 0, deltaFrames = 0;
-			int frames = 0, updates = 0;
-			long timer = System.currentTimeMillis();
-
-			    while (running) 
-			    {
-
-			        long currentTime = System.nanoTime();
-			        deltaUpdates += (currentTime - initialTime) / timeUpdates;
-			        deltaFrames += (currentTime - initialTime) / timeFrames;
-			        initialTime = currentTime;
-
-			        if (deltaUpdates >= 1) 
-			        {
-			            update();
-			            updates++;
-			            deltaUpdates--;
-			        }
-
-			        if (deltaFrames >= 1) 
-			        {
-			            render();
-			            frames++;
-			            deltaFrames--;
-			        }
-
-			        if (System.currentTimeMillis() - timer > 1000) 
-
-			            System.out.println(String.format("UPS: %s, FPS: %s", updates, frames));
-			            frames = 0;
-			            updates = 0;
-			            timer += 1000;
-			        }
-			    }
+			now = System.nanoTime();
+			nowMilis = now / 1000000;
+			lastMilis = lastTime / 1000000;
+			
+			//the lower this is the faster the game will go...
+			//250 would be 1/4 of a second... 500 would be a half... 
+			if(nowMilis - lastMilis > 10)
+			{
+				update();
+				lastTime = now;
+			}
+			render();
+		}
 	}
 	
 	public void update()
