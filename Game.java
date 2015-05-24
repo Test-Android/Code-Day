@@ -24,7 +24,7 @@ public class Game extends JFrame implements Runnable
 		this.setResizable(false);
 		this.setBounds(0,0,GraySpaceMain.WIDTH + getInsets().right,GraySpaceMain.HEIGHT + getInsets().bottom);
 		backBuffer = new BufferedImage(640 + getInsets().right,480 + getInsets().bottom,BufferedImage.TYPE_INT_RGB);
-		player = new Player(1,1,getInsets().left,getInsets().top);
+		player = new Player(0,0,getInsets().left,getInsets().top);
 		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),player, getInsets().left, getInsets().top);
 		GraySpaceMain.bindKeys(this,player);
 	}
