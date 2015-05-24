@@ -15,10 +15,10 @@ public class grid
 	int insetLeft;
 	int insetTop;
 	Player p;
-	boolean creatingRow = false;
-	int rowX = 0;
-	int rowY = 0;
-	int rowPhase = 0;
+	boolean createColumn = false;
+	int columnX = 0;
+	int columnY = 0;
+	int colPhase = 0;
 	public grid(int xvalue , int yvalue, Player p, int insetLeft, int insetTop)
 	{
 		this.insetLeft = insetLeft;
@@ -46,51 +46,46 @@ public class grid
 	{
 		if(grid[p.getX() + 1][p.getY()] == 1)
 		{
-			p.setX(p.getX() - 1);
+			
 		}
+		p.update();
 	}
 	public void makenewcolumn()
 	{
-		if(creatingRow)
+		if(createColumn)
 		{
-			if(rowPhase < 4)
+			if(colPhase == 3)
 			{
-				rowPhase++;
-				grid[rowX][rowY] = 1;
+				createColumn = false;
 			}
 			else
-				creatingRow = false;
+				colPhase ++;
 		}
 		else
 		{
-			creatingRow = true;
-			rowPhase = 0;
-			rowX = 29;
-			int dir = (int)(Math.random() * 2);
-			if(dir == 1)
+			createColumn = true;
+			columnX = 640/16 - 1;
+			columnY = (int)(Math.random() * 480/16);
+			System.out.println("ColY: " + columnY);
+			int length = (int)(Math.random() * 3) * 2;
+			System.out.println("Length: " + length);
+			colPhase = 0;
+			int count = 0;
+			boolean cont = true;
+			while(count <= length && cont)
 			{
-				int spot = (int)(Math.random() * 3) + 1;
-				if(spot + p.getY() < 640/16)
+				if(columnY + count < this.x - 1)
 				{
-					rowY = spot + p.getY();
+					grid[columnX][columnY + count] = 1;
+					
+					count++;
 				}
 				else
 				{
-					rowY = p.getY(); 
+					cont = false;
 				}
 			}
-			else
-			{
-				int spot = (int)(Math.random() * 3) + 1;
-				if(spot - p.getY() > 0)
-				{
-					rowY = spot - p.getY();
-				}
-				else
-				{
-					rowY = p.getY(); 
-				}
-			}
+				
 		}
 	}
 	 public void update()
