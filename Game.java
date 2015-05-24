@@ -53,51 +53,50 @@ public class Game extends JFrame implements Runnable
 	
 	public void run()
 	{
-		long lastTime = System.nanoTime();
-		//long timer  = System.nanoTime();
-		//final double nanoSeconds = 1000000000.0 / 60.0;
-		//double delta = 0;
-		int frames = 0;
-		int updates = 0;
-		requestFocus();
+		Long lastTime = System.nanoTime();
+		final int MAX_FPS = 60;
+		final long BEST_TIME = 1000000000 / MAX_FPS;
+		long lastFPS = 0; 
+		
 		while(running)
 		{
-			if(System.nanoTime() - lastTime > 1000)
-			{
-				System.out.println("updating");
-				update();
-				updates++;
-			}
-			long now = System.nanoTime();
-			lastTime = now;
-			render();
-			frames++;
-			//System.out.println("RUNNING");
-			//long now = System.nanoTime();
-			//delta += (now - lastTime) / nanoSeconds;
-			//lastTime = now;
-			//while(delta >= 1)
-			//{
-				//System.out.println("running as well?");
-				//update();
-				//updates++;
-				//delta--;
-			//}
-			//render();
-			//frames++;
-			//System.out.println(timer);
-			//System.out.println(System.currentTimeMillis() - timer);
-			//if(System.nanoTime() - timer > 10000)
-			//{
-				//timer = System.nanoTime();
-				//System.out.println("YO  IT MADE A THING");
-				System.out.println("Updates: " + updates + ", Frames: " + frames);
-				setTitle(NAME + " | " + updates + " updates, " + frames + ", FPS");
-				updates = 0;
-				frames = 0;
-			//}
-		}
-		stop();
+			long initialTime = System.nanoTime();
+			final double timeUpdates = 1000000000 / 60.0;
+			final double timeFrames = 1000000000 / 60.0;
+			double deltaUpdates = 0, deltaFrames = 0;
+			int frames = 0, updates = 0;
+			long timer = System.currentTimeMillis();
+
+			    while (running) 
+			    {
+
+			        long currentTime = System.nanoTime();
+			        deltaUpdates += (currentTime - initialTime) / timeUpdates;
+			        deltaFrames += (currentTime - initialTime) / timeFrames;
+			        initialTime = currentTime;
+
+			        if (deltaUpdates >= 1) 
+			        {
+			            update();
+			            updates++;
+			            deltaUpdates--;
+			        }
+
+			        if (deltaFrames >= 1) 
+			        {
+			            render();
+			            frames++;
+			            deltaFrames--;
+			        }
+
+			        if (System.currentTimeMillis() - timer > 1000) 
+
+			            System.out.println(String.format("UPS: %s, FPS: %s", updates, frames));
+			            frames = 0;
+			            updates = 0;
+			            timer += 1000;
+			        }
+			    }
 	}
 	
 	public void update()
