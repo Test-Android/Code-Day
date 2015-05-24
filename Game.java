@@ -24,12 +24,10 @@ public class Game extends JFrame implements Runnable
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setBounds(0,0,GraySpaceMain.WIDTH + getInsets().right,GraySpaceMain.HEIGHT + getInsets().bottom);
-		player = new Player(0,0);
+		player = new Player(1,1);
 		backBuffer = new BufferedImage(640 + getInsets().right,480 + getInsets().bottom,BufferedImage.TYPE_INT_RGB);
-		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),0,0, getInsets().left, getInsets().top);
+		grid = new grid((GraySpaceMain.WIDTH / 16), (GraySpaceMain.HEIGHT / 16),player, getInsets().left, getInsets().top);
 		GraySpaceMain.bindKeys(this,player);
-		playerX = 1;
-		playerY = 0;
 		
 	}
 	
@@ -105,7 +103,14 @@ public class Game extends JFrame implements Runnable
 			            frames++;
 			            deltaFrames--;
 			        }
-
+			        try
+			        {
+			        	thread.sleep(500);
+			        }
+			        catch(Exception e)
+			        {
+			        	
+			        }
 			        if (System.currentTimeMillis() - timer > 1000) 
 
 			            System.out.println(String.format("UPS: %s, FPS: %s", updates, frames));
